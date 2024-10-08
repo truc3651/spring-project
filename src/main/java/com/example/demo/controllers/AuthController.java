@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dtos.LoginOtpResponse;
 import com.example.demo.dtos.LoginResponse;
 import com.example.demo.dtos.LoginRequest;
-import com.example.demo.dtos.OtpLoginRequest;
+import com.example.demo.dtos.LoginOtpRequest;
 import com.example.demo.dtos.RegisterRequest;
 import com.example.demo.dtos.RegisterResponse;
 import com.example.demo.services.AuthService;
@@ -33,16 +34,16 @@ public class AuthController {
 
   @PostMapping("/login")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<LoginResponse> login(
+  public void login(
       @RequestBody LoginRequest loginRequest
   ) {
-    return ResponseEntity.ok(authService.login(loginRequest));
+    authService.login(loginRequest);
   }
 
   @PostMapping("/login/otp")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<LoginResponse> loginWithOtp(
-      @RequestBody OtpLoginRequest otpLoginRequest
+  public ResponseEntity<LoginOtpResponse> loginWithOtp(
+      @RequestBody LoginOtpRequest otpLoginRequest
   ) {
     return ResponseEntity.ok(authService.loginWithOtp(otpLoginRequest));
   }

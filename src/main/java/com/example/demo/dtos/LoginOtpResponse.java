@@ -5,7 +5,6 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class OtpLoginRequest {
-  private String email;
-  private String otp;
+public class LoginOtpResponse {
+  private String accessToken;
 }
